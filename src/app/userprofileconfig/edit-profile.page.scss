@@ -1,0 +1,12 @@
+/* Estilo para las cabeceras de las categorías */
+ion-list-header {
+    background-color: transparent;  /* Fondo transparente para no añadir color de fondo */
+    padding: 10px 15px;  /* Espaciado dentro de la cabecera */
+    font-size: 1.2em;  /* Aumentar el tamaño de la fuente */
+    font-weight: 700;  /* Hacer la fuente más gruesa para que resalte */
+    color: #167fb3;  /* Color azul para el texto */
+    text-transform: uppercase;  /* Convertir a mayúsculas */
+    letter-spacing: 1px;  /* Espaciado entre letras para darle un toque moderno */
+    border-bottom: 2px solid #3880ff;  /* Línea azul debajo para diferenciarlo de las opciones */
+    margin-bottom: 10px;  /* Separación con las opciones */
+  }

@@ -7,7 +7,7 @@ import { AppComponent } from './app/app.component';
 
 // Importar los iconos de Ionicons
 import { addIcons } from 'ionicons';
-import { settings, settingsSharp, mic, person, home, stopCircleSharp, logOutSharp, calendarNumberSharp, micSharp, key, textSharp, lockClosedSharp } from 'ionicons/icons';
+import { settings, settingsSharp, mic, person, home, stopCircleSharp, logOutSharp, calendarNumberSharp, micSharp, key, textSharp, lockClosedSharp, searchSharp } from 'ionicons/icons';
 
 // Registrar los iconos que vas a usar
 addIcons({
@@ -23,6 +23,7 @@ addIcons({
   'text-sharp' : textSharp, 
   'lock-closed-sharp' : lockClosedSharp,
   'mic-circle-sharp' : micSharp,
+  'search-sharp' : searchSharp,
 });
 
 bootstrapApplication(AppComponent, {

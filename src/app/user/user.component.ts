@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SpeechRecognitionService } from '../speech-recognition.service';  // Importamos el servicio
-
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user',
@@ -37,7 +37,8 @@ export class UserPage {
   constructor(
     private authService: AuthService, 
     private router: Router,
-    private speechRecognitionService: SpeechRecognitionService  // Inyectamos el servicio
+    private speechRecognitionService: SpeechRecognitionService,  // Inyectamos el servicio
+    private alertController: AlertController
   ) {
     this.userNameSubscription = this.authService.getUserName().subscribe(name => {
       this.userName = name;
@@ -113,10 +114,31 @@ export class UserPage {
   stopVoiceRecognition() {
     this.speechRecognitionService.stopRecognition();  // Detenemos el reconocimiento de voz
   }
+   
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+  async confirmLogout() {
+    const alert = await this.alertController.create({
+      header: 'Cerrar sesión',
+      message: '¿Estás seguro que quieres cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Sí',
+          handler: () => {
+            this.logout();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   goToEditProfile() {

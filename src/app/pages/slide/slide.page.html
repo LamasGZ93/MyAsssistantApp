@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/30894760/pexels-photo-30894760/free-photo-of-cesped-invernal-con-nieve-en-bad-hersfeld.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Imagen 1" />
+        <div class="overlay">
+          <ion-button expand="block" (click)="nextSlide()">Saltar</ion-button>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/30583014/pexels-photo-30583014.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Imagen 2" />
+        <div class="overlay">
+          <ion-button expand="block" (click)="nextSlide()">Saltar</ion-button>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <img src="https://plus.unsplash.com/premium_photo-1729412405215-57501267da3b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmVsbGV6YSUyMGRlJTIwbGElMjB0aWVycmF8ZW58MHx8MHx8fDA%3D" alt="Imagen 3" />
+        <div class="overlay">
+          <ion-button expand="block" (click)="nextSlide()">Saltar</ion-button>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/17767561/pexels-photo-17767561.jpeg?cs=srgb&dl=pexels-wojtekpaczes-17767561.jpg&fm=jpg" alt="Imagen 4" />
+        <div class="overlay">
+          <ion-button expand="block" (click)="goToHome()">Ir al Home</ion-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginación -->
+    <div class="swiper-pagination"></div>
+  </div>
+</ion-content>

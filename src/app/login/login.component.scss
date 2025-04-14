@@ -1,0 +1,40 @@
+.error-message {
+    color: #f44336;
+    font-size: 14px;
+    margin-left: 8px;
+    margin-top: 4px;
+  }
+  
+  ion-item.invalid {
+    --highlight-color-focused: #f44336;
+    --border-color: #f44336;
+  }
+  .google-login-container {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .google-btn {
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+  }
+  
+  .google-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .google-text {
+    margin-top: 12px;
+    font-size: 15px;
+    color: #555;
+  }

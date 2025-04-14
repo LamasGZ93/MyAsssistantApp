@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Editar Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="name" ></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Zona horaria</ion-label>
+          <ion-select formControlName="timezone">
+            <ion-select-option value="Europe/Madrid">Europe/Madrid</ion-select-option>
+            <ion-select-option value="America/New_York">America/New_York</ion-select-option>
+            <ion-select-option value="Asia/Tokyo">Asia/Tokyo</ion-select-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Estilo de interacción</ion-label>
+          <ion-select formControlName="interactionStyle">
+            <ion-select-option value="breve">Breve</ion-select-option>
+            <ion-select-option value="detallado">Detallado</ion-select-option>
+            <ion-select-option value="informal">Informal</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+  
+      <ion-button expand="full" type="submit" [disabled]="!profileForm.valid">Guardar</ion-button>
+      <ion-button expand="full" fill="clear" (click)="cancel()">Cancelar</ion-button>
+    </form>
+  </ion-content>
+  

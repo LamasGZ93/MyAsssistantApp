@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mi Asistente Personal 00.1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <div class="header-content">
+          <span class="username">Bienvenido, {{ userName }}</span>
+        </div>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Aquí va tu perfil y las funcionalidades privadas de la app.</p>
+
+      <!-- Sección para grabación (voz o texto) -->
+      <div class="input-container">
+        <!-- Toggle de modo entrada -->
+        <ion-item lines="none" class="input-mode-toggle">
+          <ion-icon
+            slot="end"
+            [name]="isVoiceInput ? 'mic-sharp' : 'text-sharp'"
+            style="font-size: 24px;"
+          ></ion-icon>
+
+          <ion-toggle
+            slot="end"
+            [(ngModel)]="isVoiceInput"
+            [disabled]="isRecording"
+            aria-label="Cambiar modo de entrada"
+
+          ></ion-toggle>
+        </ion-item>
+
+        <!-- Modo voz -->
+        <div *ngIf="isVoiceInput" class="voice-input-area">
+          <div class="recording-container">
+            <div class="drag-container">
+              <ion-icon
+              name="mic-sharp" 
+                *ngIf="!isLocked" 
+                (mousedown)="startDrag($event)" 
+                (mousemove)="moveDrag($event)" 
+                (mouseup)="stopDrag()" 
+                (touchstart)="startDrag($event)" 
+                (touchmove)="moveDrag($event)" 
+                (touchend)="stopDrag()" 
+                class="drag-button">
+                Arrastra para Grabar
+              </ion-icon>
+              <!-- Texto debajo del icono -->
+              <span class="icon-text">Arrastra para Grabar</span>
+
+              <!-- Botón de Stop con animación -->
+              <ion-icon
+                *ngIf="isRecording && isStopVisible"
+                name="stop-circle-sharp"
+                class="stop-icon pulsating"
+                (click)="stopRecording()"
+                aria-label="Parar grabación"
+              ></ion-icon>
+            </div>
+          </div>
+
+          <div *ngIf="transcribedText" class="transcription-box">
+            <p>Texto transcrito: {{ transcribedText }}</p>
+          </div>
+        </div>
+
+        <!-- Modo texto -->
+        <div *ngIf="!isVoiceInput" class="text-input-area">
+          <ion-input [(ngModel)]="userInput" placeholder="Escribe aquí..."></ion-input>
+        </div>
+      </div>
+
+      <!-- Sección de tareas -->
+      <div class="task-container">
+        <div class="task-box">
+          <h3>Tareas Pendientes</h3>
+          <ul>
+            <li *ngFor="let task of pendingTasks">{{ task }}</li>
+          </ul>
+        </div>
+        
+        <div class="task-box">
+          <h3>Tareas Completadas</h3>
+          <ul>
+            <li *ngFor="let task of completedTasks">{{ task }}</li>
+          </ul>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Accesos rápidos en la parte inferior -->
+  <div class="quick-access-bar">
+    <ion-icon name="calendar-number-sharp" class="quick-icon" aria-label="Opción 1"></ion-icon>
+    <ion-icon name="calendar-outline" class="quick-icon" aria-label="Opción 2"></ion-icon>
+    <ion-icon
+      name="settings-sharp"
+      class="quick-icon"
+      aria-label="Ajustes de perfil"
+      (click)="goToEditProfile()"
+    ></ion-icon>
+    <ion-icon
+      name="log-out-sharp"
+      class="quick-icon"
+      aria-label="Cerrar sesión"
+      (click)="logout()"
+    ></ion-icon>
+  </div>
+</ion-content>

@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Crear una cuenta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+        <!-- Nombre Completo -->
+        <ion-item [class.invalid]="name.invalid && name.touched">
+          <ion-input
+            placeholder="Nombre Completo"
+            formControlName="name"
+          ></ion-input>
+        </ion-item>
+        <div *ngIf="name.invalid && name.touched" class="error-message">
+          <p *ngIf="name.errors?.['required']">El nombre es obligatorio.</p>
+        </div>
+
+        <!-- Email -->
+        <ion-item [class.invalid]="email.invalid && email.touched">
+          <ion-input
+            placeholder="Correo Electrónico"
+            formControlName="email"
+            type="email"
+          ></ion-input>
+        </ion-item>
+        <div *ngIf="email.invalid && email.touched" class="error-message">
+          <p *ngIf="email.errors?.['required']">El email es obligatorio.</p>
+          <p *ngIf="email.errors?.['email']">Formato de email no válido.</p>
+        </div>
+
+        <!-- Contraseña -->
+        <ion-item [class.invalid]="password.invalid && password.touched">
+          <ion-input
+            placeholder="Contraseña"
+            formControlName="password"
+            type="password"
+          ></ion-input>
+        </ion-item>
+        <div *ngIf="password.invalid && password.touched" class="error-message">
+          <p *ngIf="password.errors?.['required']">La contraseña es obligatoria.</p>
+          <p *ngIf="password.errors?.['minlength']">Mínimo 6 caracteres.</p>
+        </div>
+
+        <!-- Botón -->
+        <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">
+          Registrarse
+        </ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

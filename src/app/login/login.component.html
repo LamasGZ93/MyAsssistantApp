@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bienvenido de nuevo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <!-- Campo Email -->
+        <ion-item [class.invalid]="email.invalid && email.touched">
+          <ion-input
+            placeholder="Correo Electrónico"
+            formControlName="email"
+            type="email"
+          ></ion-input>
+        </ion-item>
+        <div *ngIf="email.invalid && email.touched" class="error-message">
+          <p *ngIf="email.errors?.['required']">El email es obligatorio.</p>
+          <p *ngIf="email.errors?.['email']">Formato de email no válido.</p>
+        </div>
+
+        <!-- Campo Contraseña -->
+        <ion-item [class.invalid]="password.invalid && password.touched">
+          <ion-input
+            placeholder="Contraseña"
+            formControlName="password"
+            type="password"
+          ></ion-input>
+        </ion-item>
+        <div *ngIf="password.invalid && password.touched" class="error-message">
+          <p *ngIf="password.errors?.['required']">La contraseña es obligatoria.</p>
+          <p *ngIf="password.errors?.['minlength']">Mínimo 6 caracteres.</p>
+        </div>
+
+        <!-- Botón Login con email y contraseña -->
+        <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">
+          Iniciar Sesión
+        </ion-button>
+
+        <!-- Login con Google personalizado -->
+        <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+          <ion-button 
+            shape="round" 
+            fill="clear" 
+            (click)="loginWithGoogle()" 
+            title="Iniciar sesión con Google"
+            #googleButton
+            (mouseover)="onMouseOver()"
+            (mouseout)="onMouseOut()"
+            style=" 
+              width: 64px; 
+              height: 64px; 
+              padding: 0; 
+              border-radius: 50%; 
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+              transition: transform 0.3s ease, box-shadow 0.3s ease; 
+              background-color: white; 
+              display: flex; 
+              align-items: center; 
+              justify-content: center; 
+              cursor: pointer;
+            "
+          >
+            <!-- Icono de Google -->
+            <img 
+              src="https://developers.google.com/identity/images/g-logo.png"
+              alt="Google login"
+              style="width: 70px; height: 70px; object-fit: contain;" 
+            />
+          </ion-button>
+          <p style="margin-top: 12px; font-size: 15px; color: #555;">
+            Iniciar sesión con <strong>Google</strong>
+          </p>
+        </div>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
